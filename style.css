@@ -743,6 +743,7 @@ section {
 .footer-links {
     display: flex;
     gap: 2rem;
+    align-items: center;
 }
 
 .footer-links a {
@@ -753,6 +754,15 @@ section {
 
 .footer-links a:hover {
     color: var(--primary-color);
+}
+
+.footer-links a[aria-label*="Instagram"] {
+    font-size: 1.2rem;
+    margin-left: 0.5rem;
+}
+
+.footer-links a[aria-label*="Instagram"]:hover {
+    color: #E4405F; /* Instagram brand color */
 }
 
 /* Responsive Design */
