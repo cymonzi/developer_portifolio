@@ -138,6 +138,23 @@ body {
     background: rgba(15, 23, 42, 0.95);
 }
 
+/* Ensure nav links maintain proper colors in all states */
+.navbar .nav-link {
+    color: var(--text-color) !important;
+}
+
+[data-theme="dark"] .navbar .nav-link {
+    color: var(--text-color) !important;
+}
+
+.navbar .nav-link:hover {
+    color: var(--primary-color) !important;
+}
+
+.navbar .nav-link.active {
+    color: var(--primary-color) !important;
+}
+
 .nav-container {
     max-width: 1200px;
     margin: 0 auto;

@@ -41,6 +41,11 @@ class ThemeManager {
         setTimeout(() => {
             document.body.style.transition = '';
         }, 300);
+        
+        // Dispatch custom event for other components
+        document.dispatchEvent(new CustomEvent('themeChanged', { 
+            detail: { theme: newTheme } 
+        }));
     }
 
     updateThemeIcon() {
@@ -80,6 +85,11 @@ class NavigationManager {
 
         // Active link highlighting
         this.setupActiveNavigation();
+        
+        // Listen for theme changes
+        document.addEventListener('themeChanged', () => {
+            this.handleNavbarScroll(); // Update navbar colors when theme changes
+        });
     }
 
     toggleMobileMenu() {
@@ -99,13 +109,15 @@ class NavigationManager {
     }
 
     handleNavbarScroll() {
+        const isDarkMode = document.documentElement.hasAttribute('data-theme');
+        
         if (window.scrollY > 100) {
-            navbar.style.background = this.currentTheme === 'dark' 
+            navbar.style.background = isDarkMode 
                 ? 'rgba(15, 23, 42, 0.98)' 
                 : 'rgba(255, 255, 255, 0.98)';
             navbar.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
         } else {
-            navbar.style.background = this.currentTheme === 'dark' 
+            navbar.style.background = isDarkMode 
                 ? 'rgba(15, 23, 42, 0.95)' 
                 : 'rgba(255, 255, 255, 0.95)';
             navbar.style.boxShadow = 'none';
