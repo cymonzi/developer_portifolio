@@ -1,23 +1,29 @@
 # 🚀 Professional Developer Portfolio Template
 
-A modern, responsive, and feature-rich developer portfolio template built with vanilla HTML, CSS, and JavaScript. This template is designed to be sold as a premium template with clean code, modern design, and extensive customization options.
+**A modern, responsive portfolio template for developers, designers, and freelancers**
 
-![Portfolio Preview](./assets/images/preview.png)
+[![Live Demo](https://img.shields.io/badge/Live-Demo-brightgreen)](https://cymonzi.github.io/developer_portifolio/)
+[![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE.md)
+[![HTML](https://img.shields.io/badge/HTML-5-orange.svg)](https://www.w3.org/html/)
+[![CSS](https://img.shields.io/badge/CSS-3-blue.svg)](https://www.w3.org/Style/CSS/)
+[![JavaScript](https://img.shields.io/badge/JavaScript-ES6-yellow.svg)](https://www.javascript.com/)
 
 ## ✨ Features
 
-### 🎨 Design & UI
-- **Modern Gradient Design**: Beautiful teal/cyan gradient color scheme
-- **Dark/Light Theme Toggle**: Seamless theme switching with smooth transitions
-- **Responsive Design**: Perfectly optimized for all devices (mobile, tablet, desktop)
-- **Smooth Animations**: Scroll-triggered animations and hover effects
-- **Clean Typography**: Poppins and Inter fonts for professional look
+- 🎨 **Modern Design** - Beautiful gradient color scheme with teal/cyan aesthetics
+- 🌙 **Dark/Light Theme** - Automatic theme switching with smooth transitions
+- 📱 **Fully Responsive** - Mobile-first design that works on all devices
+- ⚡ **Performance Optimized** - Fast loading with lazy loading and optimized code
+- 🎯 **SEO Ready** - Complete meta tags and semantic HTML structure
+- 📧 **Contact Form** - Working contact form with validation
+- 🎬 **Smooth Animations** - Scroll-triggered animations and hover effects
+- 🛠️ **Easy to Customize** - Well-documented and organized code
 
-### 🛠️ Functionality
-- **Sticky Navigation**: Fixed navbar with active section highlighting
-- **Smooth Scrolling**: Enhanced navigation experience
-- **Contact Form**: Fully functional with validation and success feedback
-- **SEO Optimized**: Complete meta tags and semantic HTML structure
+## 🖥️ Live Demo
+
+**[View Live Demo →](https://cymonzi.github.io/developer_portifolio/)**
+
+## 🚀 Quick Start
 - **Performance Optimized**: Lazy loading, preloading, and optimized animations
 
 ### 📱 Responsive Features
