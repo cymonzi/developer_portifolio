@@ -33,15 +33,44 @@ class DragManager {
         document.addEventListener('touchmove', this.drag.bind(this));
         document.addEventListener('touchend', this.dragEnd.bind(this));
         
+        // Handle responsive positioning
+        window.addEventListener('resize', this.handleResize.bind(this));
+        
         // Set initial position
         this.setInitialPosition();
     }
     
-    setInitialPosition() {
-        const rect = this.toggleElement.getBoundingClientRect();
-        this.xOffset = rect.left;
-        this.yOffset = rect.top;
+    handleResize() {
+        // Reset position on resize to ensure proper mobile positioning
+        this.setResponsivePosition();
+    }
+    
+    setResponsivePosition() {
+        const isMobile = window.innerWidth <= 768;
+        if (isMobile) {
+            // On mobile, position below navbar
+            this.xOffset = window.innerWidth - 60; // 60px from right (2.5rem + 1rem margin)
+            this.yOffset = 80; // 5rem from top
+        } else {
+            // On desktop, use default position
+            this.xOffset = window.innerWidth - 80; // 80px from right (3rem + 2rem margin)
+            this.yOffset = 32; // 2rem from top
+        }
         this.updatePosition();
+    }
+    
+    setInitialPosition() {
+        // Check if element has been moved by user, if not use responsive position
+        const rect = this.toggleElement.getBoundingClientRect();
+        const hasBeenMoved = this.toggleElement.style.left || this.toggleElement.style.top;
+        
+        if (!hasBeenMoved) {
+            this.setResponsivePosition();
+        } else {
+            this.xOffset = rect.left;
+            this.yOffset = rect.top;
+            this.updatePosition();
+        }
     }
     
     dragStart(e) {

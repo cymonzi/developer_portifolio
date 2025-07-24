@@ -5,6 +5,143 @@ const navMenu = document.getElementById('nav-menu');
 const navbar = document.getElementById('navbar');
 const contactForm = document.getElementById('contact-form');
 
+// DragManager - Handles draggable theme toggle
+class DragManager {
+    constructor() {
+        this.toggleElement = document.querySelector('.theme-toggle');
+        this.isDragging = false;
+        this.currentX = 0;
+        this.currentY = 0;
+        this.initialX = 0;
+        this.initialY = 0;
+        this.xOffset = 0;
+        this.yOffset = 0;
+        
+        this.init();
+    }
+    
+    init() {
+        if (!this.toggleElement) return;
+        
+        // Mouse events
+        this.toggleElement.addEventListener('mousedown', this.dragStart.bind(this));
+        document.addEventListener('mousemove', this.drag.bind(this));
+        document.addEventListener('mouseup', this.dragEnd.bind(this));
+        
+        // Touch events for mobile
+        this.toggleElement.addEventListener('touchstart', this.dragStart.bind(this));
+        document.addEventListener('touchmove', this.drag.bind(this));
+        document.addEventListener('touchend', this.dragEnd.bind(this));
+        
+        // Handle responsive positioning
+        window.addEventListener('resize', this.handleResize.bind(this));
+        
+        // Set initial position
+        this.setInitialPosition();
+    }
+    
+    handleResize() {
+        // Reset position on resize to ensure proper mobile positioning
+        this.setResponsivePosition();
+    }
+    
+    setResponsivePosition() {
+        const isMobile = window.innerWidth <= 768;
+        if (isMobile) {
+            // On mobile, position below navbar
+            this.xOffset = window.innerWidth - 60; // 60px from right (2.5rem + 1rem margin)
+            this.yOffset = 80; // 5rem from top
+        } else {
+            // On desktop, use default position
+            this.xOffset = window.innerWidth - 80; // 80px from right (3rem + 2rem margin)
+            this.yOffset = 32; // 2rem from top
+        }
+        this.updatePosition();
+    }
+    
+    setInitialPosition() {
+        // Check if element has been moved by user, if not use responsive position
+        const rect = this.toggleElement.getBoundingClientRect();
+        const hasBeenMoved = this.toggleElement.style.left || this.toggleElement.style.top;
+        
+        if (!hasBeenMoved) {
+            this.setResponsivePosition();
+        } else {
+            this.xOffset = rect.left;
+            this.yOffset = rect.top;
+            this.updatePosition();
+        }
+    }
+    
+    dragStart(e) {
+        if (e.type === 'touchstart') {
+            this.initialX = e.touches[0].clientX - this.xOffset;
+            this.initialY = e.touches[0].clientY - this.yOffset;
+        } else {
+            this.initialX = e.clientX - this.xOffset;
+            this.initialY = e.clientY - this.yOffset;
+        }
+        
+        if (e.target === this.toggleElement) {
+            this.isDragging = true;
+            this.toggleElement.classList.add('dragging');
+        }
+    }
+    
+    drag(e) {
+        if (this.isDragging) {
+            e.preventDefault();
+            
+            if (e.type === 'touchmove') {
+                this.currentX = e.touches[0].clientX - this.initialX;
+                this.currentY = e.touches[0].clientY - this.initialY;
+            } else {
+                this.currentX = e.clientX - this.initialX;
+                this.currentY = e.clientY - this.initialY;
+            }
+            
+            this.xOffset = this.currentX;
+            this.yOffset = this.currentY;
+            
+            // Constrain to viewport
+            this.constrainToViewport();
+            this.updatePosition();
+        }
+    }
+    
+    dragEnd(e) {
+        this.isDragging = false;
+        this.toggleElement.classList.remove('dragging');
+    }
+    
+    constrainToViewport() {
+        const rect = this.toggleElement.getBoundingClientRect();
+        const viewportWidth = window.innerWidth;
+        const viewportHeight = window.innerHeight;
+        
+        // Constrain horizontally
+        if (this.xOffset < 0) {
+            this.xOffset = 0;
+        } else if (this.xOffset + rect.width > viewportWidth) {
+            this.xOffset = viewportWidth - rect.width;
+        }
+        
+        // Constrain vertically
+        if (this.yOffset < 0) {
+            this.yOffset = 0;
+        } else if (this.yOffset + rect.height > viewportHeight) {
+            this.yOffset = viewportHeight - rect.height;
+        }
+    }
+    
+    updatePosition() {
+        this.toggleElement.style.left = `${this.xOffset}px`;
+        this.toggleElement.style.top = `${this.yOffset}px`;
+        this.toggleElement.style.right = 'auto';
+        this.toggleElement.style.bottom = 'auto';
+    }
+}
+
 // Theme Management
 class ThemeManager {
     constructor() {
@@ -493,6 +630,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const performanceManager = new PerformanceManager();
     const skillsAnimationManager = new SkillsAnimationManager();
     const projectsManager = new ProjectsManager();
+    const dragManager = new DragManager();
 
     // Add loading complete class to body
     setTimeout(() => {
