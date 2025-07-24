@@ -1,12 +1,32 @@
-# 🚀 Professional Developer Portfolio Template
+# 🎨 Professional Developer Portfolio Template - DEMO VERSION
 
 **A modern, responsive portfolio template for developers, designers, and freelancers**
 
 [![Live Demo](https://img.shields.io/badge/Live-Demo-brightgreen)](https://cymonzi.github.io/developer_portifolio/)
-[![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE.md)
+[![Purchase](https://img.shields.io/badge/Purchase-Gumroad-orange.svg)](https://cymonzi.gumroad.com/l/aiiqzk)
+[![License](https://img.shields.io/badge/License-Commercial-blue.svg)](LICENSE.md)
 [![HTML](https://img.shields.io/badge/HTML-5-orange.svg)](https://www.w3.org/html/)
 [![CSS](https://img.shields.io/badge/CSS-3-blue.svg)](https://www.w3.org/Style/CSS/)
 [![JavaScript](https://img.shields.io/badge/JavaScript-ES6-yellow.svg)](https://www.javascript.com/)
+
+> ⚠️ **This is a DEMO version with limitations. [Purchase the full template](https://cymonzi.gumroad.com/l/aiiqzk) for commercial use without restrictions.**
+
+## 💰 Get Full Version
+🛒 **[Purchase on Gumroad →](https://cymonzi.gumroad.com/l/aiiqzk)**
+
+## 🚨 Demo Limitations
+This public repository contains a **demonstration version** with:
+- 🔒 Watermarks and demo notices
+- 🔒 Contact form disabled  
+- 🔒 Code protection measures
+- 🔒 Usage restrictions
+
+**Full version includes:**
+- ✅ Clean code without watermarks
+- ✅ Working contact form
+- ✅ Commercial license
+- ✅ Full documentation
+- ✅ Priority support
 
 ## ✨ Features
 

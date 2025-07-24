@@ -1,32 +1,51 @@
-MIT License
+# License Agreement - Developer Portfolio Template
 
-Copyright (c) 2025 Zi Designs - Developer Portfolio Template
+**Copyright (c) 2025 Zi Designs**
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+## 🎨 Template License Terms
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+### ✅ WHAT YOU GET WITH PURCHASE:
+- ✅ **Commercial Use Rights** - Use for client projects and personal portfolios
+- ✅ **Modification Rights** - Customize colors, content, and styling
+- ✅ **Unlimited Projects** - Use in multiple projects with one license
+- ✅ **Source Code Access** - Full HTML, CSS, and JavaScript files
+- ✅ **Documentation** - Setup guides and customization instructions
+- ✅ **Updates** - Receive template updates and improvements
+- ✅ **Support** - Basic support via Instagram DM
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+### ❌ RESTRICTIONS:
+- ❌ **No Redistribution** - Cannot resell, redistribute, or share template files
+- ❌ **No Template Marketplaces** - Cannot upload to ThemeForest, GitHub, etc.
+- ❌ **Attribution Required** - Must keep "Template by Zi Designs" credit
+- ❌ **No Warranty** - Template provided "as-is" without guarantees
 
-Commercial License Terms:
-- ✅ Personal use allowed
-- ✅ Commercial projects allowed
-- ✅ Client projects allowed
-- ✅ Modification allowed
-- ❌ Resale as template not allowed
-- ❌ Redistribution of source files not allowed
+### 🚨 DEMO VERSION LIMITATIONS:
+This public repository contains a **DEMO VERSION** with:
+- 🔒 Watermarks and demo restrictions
+- 🔒 Disabled contact form functionality
+- 🔒 Code protection measures
+- 🔒 Limited feature access
+
+### 💰 PURCHASE FULL VERSION:
+**Get the complete, unrestricted template at:**
+👉 **https://cymonzi.gumroad.com/l/aiiqzk**
+
+### 📞 SUPPORT & LICENSING:
+- **Instagram:** [@zidesigns01](https://instagram.com/zidesigns01)
+- **Email:** Contact via Gumroad or Instagram
+- **License Questions:** DM on Instagram
+
+### ⚖️ LEGAL:
+- **Jurisdiction:** This license is governed by international copyright law
+- **Violations:** Unauthorized use may result in legal action
+- **DMCA:** Template is protected under DMCA provisions
+
+---
+
+**🎯 Ready to use this template professionally?**
+**[Purchase your license now →](https://cymonzi.gumroad.com/l/aiiqzk)**
+
+*Built with ❤️ by Zi Designs*
 
 Credits:
 - Font Awesome icons (https://fontawesome.com/)
