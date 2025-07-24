@@ -107,24 +107,12 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    cursor: grab;
+    cursor: pointer;
     transition: all 0.3s ease;
     box-shadow: var(--shadow);
-    user-select: none;
-    touch-action: none;
 }
 
-.theme-toggle:active {
-    cursor: grabbing;
-}
-
-.theme-toggle.dragging {
-    transition: none;
-    transform: scale(1.1);
-    box-shadow: var(--shadow-hover);
-}
-
-.theme-toggle:hover:not(.dragging) {
+.theme-toggle:hover {
     transform: scale(1.1);
     box-shadow: var(--shadow-hover);
 }
