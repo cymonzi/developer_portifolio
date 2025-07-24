@@ -42,8 +42,7 @@ class LicenseManager {
         console.log('%c💡 Like what you see? Get the full version at: https://cymonzi.gumroad.com/l/aiiqzk', 
             'color: #A0E9FF; font-size: 14px;');
         
-        // Add demo restrictions
-        this.addDemoRestrictions();
+        // Keep demo clean and professional
     }
     
     verifyLicense(key) {
@@ -64,72 +63,151 @@ class LicenseManager {
     addWatermark() {
         if (!this.demoMode) return;
         
-        // Add floating watermark
+        // Add very subtle floating watermark
         const watermark = document.createElement('div');
         watermark.id = 'demo-watermark';
         watermark.innerHTML = `
             <div style="
                 position: fixed;
-                bottom: 20px;
-                left: 20px;
-                background: rgba(0, 191, 166, 0.9);
+                bottom: 15px;
+                left: 15px;
+                background: rgba(0, 191, 166, 0.8);
                 color: white;
-                padding: 8px 16px;
-                border-radius: 20px;
-                font-size: 12px;
-                z-index: 9999;
+                padding: 6px 12px;
+                border-radius: 15px;
+                font-size: 11px;
+                z-index: 1000;
                 font-family: 'Inter', sans-serif;
-                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-                backdrop-filter: blur(10px);
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
                 cursor: pointer;
                 transition: all 0.3s ease;
-            " onclick="window.open('https://cymonzi.gumroad.com/l/aiiqzk', '_blank')">
-                🎨 Demo by <strong>Zi Designs</strong> - Get Full Version
+                opacity: 0.7;
+            " onclick="window.open('https://cymonzi.gumroad.com/l/aiiqzk', '_blank')" 
+               onmouseover="this.style.opacity='1'" 
+               onmouseout="this.style.opacity='0.7'">
+                🎨 by Zi Designs
             </div>
         `;
         document.body.appendChild(watermark);
         
-        // Animate watermark
+        // Auto-fade after some time
         setTimeout(() => {
             const element = document.getElementById('demo-watermark');
             if (element) {
-                element.style.transform = 'translateY(-10px)';
-                element.style.opacity = '0.8';
+                element.style.opacity = '0.4';
             }
-        }, 2000);
+        }, 5000);
     }
     
     addDemoRestrictions() {
-        // Add demo notification to contact form
-        setTimeout(() => {
-            const contactForm = document.getElementById('contact-form');
-            if (contactForm && this.demoMode) {
-                const demoNotice = document.createElement('div');
-                demoNotice.innerHTML = `
-                    <div style="
-                        background: linear-gradient(135deg, #A0E9FF 0%, #00BFA6 100%);
-                        color: white;
-                        padding: 12px;
-                        border-radius: 8px;
-                        margin-bottom: 20px;
-                        text-align: center;
-                        font-size: 14px;
-                    ">
-                        📧 <strong>Demo Version:</strong> Contact form disabled. 
-                        <a href="https://cymonzi.gumroad.com/l/aiiqzk" target="_blank" style="color: white; text-decoration: underline;">
-                            Get full version
-                        </a> to enable all features.
-                    </div>
-                `;
-                contactForm.parentNode.insertBefore(demoNotice, contactForm);
-                
-                // Disable form submission
-                contactForm.addEventListener('submit', (e) => {
+        // Add demo notification to contact form immediately
+        const contactForm = document.getElementById('contact-form');
+        if (contactForm && this.demoMode) {
+            // Create demo notice
+            const demoNotice = document.createElement('div');
+            demoNotice.id = 'demo-form-notice';
+            demoNotice.innerHTML = `
+                <div style="
+                    background: linear-gradient(135deg, #A0E9FF 0%, #00BFA6 100%);
+                    color: white;
+                    padding: 15px;
+                    border-radius: 8px;
+                    margin-bottom: 20px;
+                    text-align: center;
+                    font-size: 14px;
+                    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+                ">
+                    � <strong>Demo Version:</strong> Contact form disabled in demo. 
+                    <a href="https://cymonzi.gumroad.com/l/aiiqzk" target="_blank" style="color: white; text-decoration: underline; font-weight: bold;">
+                        Get full version
+                    </a> to enable all features.
+                </div>
+            `;
+            
+            // Insert notice before the form
+            contactForm.parentNode.insertBefore(demoNotice, contactForm);
+            
+            // Disable all form inputs
+            const inputs = contactForm.querySelectorAll('input, textarea, button');
+            inputs.forEach(input => {
+                input.disabled = true;
+                input.style.opacity = '0.6';
+                input.style.cursor = 'not-allowed';
+            });
+            
+            // Override form submission completely
+            contactForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                this.showDemoFormMessage();
+                return false;
+            });
+            
+            // Add click handler to form to show demo message
+            contactForm.addEventListener('click', (e) => {
+                if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA' || e.target.tagName === 'BUTTON') {
                     e.preventDefault();
-                    alert('Contact form is disabled in demo version. Purchase the full template to enable all features.');
-                });
+                    this.showDemoFormMessage();
+                }
+            });
+        }
+    }
+    
+    showDemoFormMessage() {
+        const message = document.createElement('div');
+        message.style.cssText = `
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0, 0, 0, 0.9);
+            color: white;
+            padding: 25px;
+            border-radius: 12px;
+            text-align: center;
+            z-index: 10000;
+            font-family: 'Inter', sans-serif;
+            max-width: 400px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        `;
+        message.innerHTML = `
+            <h3 style="margin-top: 0; color: #00BFA6;">🔒 Demo Version</h3>
+            <p style="margin: 15px 0;">Contact form is disabled in demo version.</p>
+            <p style="margin: 15px 0;"><strong>Purchase the full template to unlock:</strong></p>
+            <ul style="text-align: left; margin: 15px 0;">
+                <li>✅ Working contact form</li>
+                <li>✅ No watermarks</li>
+                <li>✅ Full source code access</li>
+                <li>✅ Commercial license</li>
+            </ul>
+            <div style="margin-top: 20px;">
+                <a href="https://cymonzi.gumroad.com/l/aiiqzk" target="_blank" style="
+                    background: linear-gradient(135deg, #A0E9FF 0%, #00BFA6 100%);
+                    color: white;
+                    text-decoration: none;
+                    padding: 10px 20px;
+                    border-radius: 6px;
+                    display: inline-block;
+                    margin-right: 10px;
+                    font-weight: bold;
+                ">Get Full Version</a>
+                <button onclick="this.parentElement.parentElement.remove()" style="
+                    background: transparent;
+                    color: #ccc;
+                    border: 1px solid #ccc;
+                    padding: 10px 20px;
+                    border-radius: 6px;
+                    cursor: pointer;
+                ">Close</button>
+            </div>
+        `;
+        document.body.appendChild(message);
+        
+        setTimeout(() => {
+            if (message.parentNode) {
+                message.remove();
             }
-        }, 1000);
+        }, 8000);
     }
     
     removeDemoRestrictions() {
@@ -142,22 +220,11 @@ class LicenseManager {
     }
     
     setupProtection() {
-        // Disable right-click context menu in demo mode
+        // Minimal protection - keep demo looking professional
         if (this.demoMode) {
-            document.addEventListener('contextmenu', (e) => {
-                e.preventDefault();
-                this.showProtectionMessage();
-            });
-            
-            // Disable F12, Ctrl+Shift+I, Ctrl+U
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'F12' || 
-                    (e.ctrlKey && e.shiftKey && e.key === 'I') ||
-                    (e.ctrlKey && e.key === 'u')) {
-                    e.preventDefault();
-                    this.showProtectionMessage();
-                }
-            });
+            // Only show console message
+            console.log('%c🎨 Demo by Zi Designs - Full version: https://cymonzi.gumroad.com/l/aiiqzk', 
+                'color: #00BFA6; font-size: 12px;');
         }
     }
     
